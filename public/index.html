@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <style>
+      body {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Message</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        
+      </tbody>
+    </table>
+
+    <script type="text/javascript">
+      var socket = io("http://localhost:3000");
+
+      // Render task in the table
+      function renderTask(task) {
+        $("#table-body").prepend(
+          "<tr>" +
+          "<td>" + task.id + "</td>" +
+          "<td>" + task.code + "</td>" +
+          "<td>" + task.message + "</td>" +
+          "<td>" + task.result + "</td>" +
+          "</tr>"
+        );
+      }
+
+      // Receive the events already performed
+      socket.on("previousTasks", function (tasks) {
+        for (task of tasks) {
+          renderTask(task);
+        }
+      });
+
+      // Receive the new events
+      socket.on("receivedTask", function (task) {
+        renderTask(task);
+      });
+    </script>
+  </body>
+</html>
