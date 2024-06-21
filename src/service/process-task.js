@@ -36,8 +36,8 @@ module.exports = class ProcessTaskService {
 
     return {
       id: data.id,
-      code: 200,
-      message: response,
+      code: response.code,
+      message: response.message,
       result,
     };
   }

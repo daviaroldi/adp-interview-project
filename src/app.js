@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
@@ -24,6 +25,7 @@ app.use('/', tasksRoutes);
 
 // processing the results and storing in memory.
 // It's possible to add a DB with high performance like Mongo
+const intervalExecution = process.env.INTERVAL_EXECUTION;
 const tasks = [];
 io.on('connection', (socket) => {
   console.log('Running on port 3000');
@@ -37,7 +39,7 @@ io.on('connection', (socket) => {
       tasks.push(data);
       socket.broadcast.emit('receivedTask', data);
     });
-  }, 100);
+  }, intervalExecution);
 });
 
 server.listen(3000);

@@ -2,8 +2,8 @@ const axios = require('axios');
 
 module.exports = new class Api {
   constructor() {
-    this.baseURL = 'https://interview.adpeai.com/api/';
-    this.version = 'v1';
+    this.baseURL = process.env.ADP_INTERVIEW_BASE_URL;
+    this.version = process.env.ADP_INTERVIEW_API_VERSION;
   }
 
   getURLWithVersion() {
