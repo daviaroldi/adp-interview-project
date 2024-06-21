@@ -28,8 +28,6 @@ app.use('/', tasksRoutes);
 const intervalExecution = process.env.INTERVAL_EXECUTION;
 const tasks = [];
 io.on('connection', (socket) => {
-  console.log('Running on port 3000');
-
   // if server is already running, show the old events
   socket.emit('previousTasks', tasks);
 
