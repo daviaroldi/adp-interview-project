@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import dotenv from 'dotenv/config';
 import express from 'express';
 import ejs from 'ejs';
@@ -9,19 +10,19 @@ import { fileURLToPath } from 'url';
 import tasksRoutes from './routes/tasks.js';
 import ProcessTaskService from './service/process-task.js';
 
-const __filename = fileURLToPath(import.meta.url);
+const filename = fileURLToPath(import.meta.url);
 
-const __dirname = path.dirname(__filename);
+const dirname = path.dirname(filename);
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
 // public folder is the only one accessible by browser
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(dirname, '..', 'public')));
 
 // views are in public folder
-app.set('views', path.join(__dirname, '..', 'public'));
+app.set('views', path.join(dirname, '..', 'public'));
 
 // define the engine that will render html
 app.engine('html', ejs.renderFile);

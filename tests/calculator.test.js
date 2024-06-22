@@ -1,7 +1,7 @@
-import operations from './assets/operations-mock.json';
+import tasks from './assets/tasks-mock.json';
+import CalculatorService from '../src/service/calculator.js';
 
-test('Calculate operations', async () => {
-  // it.each();
-  console.log(operations);
-  expect(true).toBe(true);
+test.each(tasks)('Calculate operations $operation', async (task) => {
+  const result = CalculatorService.calculate(task.left, task.right, task.operation)
+  expect(result).toBe(task.result);
 });

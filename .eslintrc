@@ -3,8 +3,9 @@
   "parserOptions": {
     "ecmaVersion": 2020
   },
-  "env": {
-    "jest/globals": true
-  },
-  "plugins": ["jest", "vitest"]
+  "plugins": ["vitest"],
+  "rules": {
+    "import/extensions": ["error", "ignorePackages"],
+    "class-methods-use-this": "off"
+  }
 }

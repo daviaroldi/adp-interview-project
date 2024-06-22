@@ -13,26 +13,29 @@ export default class ProcessTaskService {
     const { data } = await api.getTask();
     const result = CalculatorService.calculate(data.left, data.right, data.operation);
 
-    const response = {
-      code: null,
-      message: null,
-      id: data.id,
-      result,
-    };
+    let response = null;
     try {
-      const resp = await api.submitTask(
+      response = await api.submitTask(
         {
           id: data.id,
           result,
         },
       );
-      response.code = resp.status;
     } catch (error) {
-      response.code = error.response.status;
+      response = error.response;
     }
 
-    response.message = MESSAGES[response.code];
+    return this.handleResponse(response, data, result);
+  }
 
-    return response;
+  // Function to handle response properly,
+  // in this case, just getting the correct message to be returned
+  handleResponse(response, data, result) {
+    return {
+      code: response.status,
+      message: MESSAGES[response.status],
+      id: data.id,
+      result,
+    };
   }
 }
