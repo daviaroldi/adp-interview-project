@@ -33,5 +33,7 @@ INTERVAL_EXECUTION = 1000
   <li>With coverage report: <pre>npm run test-coverage</pre></li>
 </ul>
 
+<p>Running the npm start or npm run dev command will set up the project in the <b>http://localhost:3000</b> address.</p>
+
 <h4>Bonus Question</h4>
 <p>It's possible to create a Queue application structure, for example using RabbitMQ, and process the request asynchronously. If some of the requests fail with 429, add it to the queue again with a delay time to process.</p>
