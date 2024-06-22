@@ -19,7 +19,6 @@ export default class ProcessTaskService {
       id: data.id,
       result,
     };
-
     try {
       const resp = await api.submitTask(
         {
@@ -27,13 +26,13 @@ export default class ProcessTaskService {
           result,
         },
       );
-      response.code = resp.status
+      response.code = resp.status;
     } catch (error) {
-      response.code = error.response.status
+      response.code = error.response.status;
     }
 
     response.message = MESSAGES[response.code];
 
     return response;
   }
-};
+}

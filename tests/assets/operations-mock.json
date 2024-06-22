@@ -1,0 +1,32 @@
+[
+  {
+    "id": "5a41307f-2342-45f7-a144-d6d53d2f3c57",
+    "operation": "remainder",
+    "left": -2703759441766803,
+    "right": -7967951047237295
+  },
+  {
+    "id": "5349e3ff-faf1-4d94-a5ed-bb5ffee7ee08",
+    "operation": "multiplication",
+    "left": 8193722938355413,
+    "right": -2414184688796715
+  },
+  {
+    "id": "c56c0d21-ad0b-46e3-86c4-d7105d06b4ac",
+    "operation": "division",
+    "left": -941627464020607,
+    "right": 4918229508016933
+  },
+  {
+    "id": "bf7a8cfa-e118-45d2-9134-aeda4cd14715",
+    "operation": "addition",
+    "left": 1285270238525533,
+    "right": -6178972544848599
+  },
+  {
+    "id": "e60e6b4a-7ee4-499b-98e7-67e734f30aaf",
+    "operation": "subtraction",
+    "left": -7791348268415559,
+    "right": 8152757746012665
+  }
+]

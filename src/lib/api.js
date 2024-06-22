@@ -1,4 +1,4 @@
-import { default as axios } from 'axios';
+import axios from 'axios';
 
 class Api {
   constructor() {
@@ -28,6 +28,6 @@ class Api {
       task,
     );
   }
-};
+}
 
 export default new Api();

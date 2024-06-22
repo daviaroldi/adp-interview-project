@@ -1,17 +1,12 @@
-import { default as axios } from 'axios';
-import api from '../src/lib/api';
+import axios from 'axios';
+import api from '../src/lib/api.js';
+import operations from './assets/operations-mock.json';
 
-jest.mock('axios');
-
-const taskMocked = {
-  id: "5a41307f-2342-45f7-a144-d6d53d2f3c57",
-  operation: "remainder",
-  left: -2703759441766803,
-  right: -7967951047237295
-}
+vi.mock('axios');
 
 test('Getting task', async () => {
+  const taskMocked = operations[0];
   axios.get.mockImplementation(() => Promise.resolve({ data: taskMocked }));
-  const task = await api.getTask();
-  expect(task).toBe(taskMocked);
+  const { data } = await api.getTask();
+  expect(data).toBe(taskMocked);
 });

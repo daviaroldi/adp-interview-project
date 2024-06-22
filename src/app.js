@@ -7,7 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import tasksRoutes from './routes/tasks.js';
-import ProcessTaskService from './service/process-task.js'
+import ProcessTaskService from './service/process-task.js';
 
 const __filename = fileURLToPath(import.meta.url);
 

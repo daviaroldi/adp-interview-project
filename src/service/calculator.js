@@ -26,4 +26,4 @@ class CalculatorService {
   }
 }
 
-export default new CalculatorService()
+export default new CalculatorService();

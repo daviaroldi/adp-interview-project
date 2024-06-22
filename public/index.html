@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ADP Interview Assessment</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <style>
       body {
@@ -36,14 +35,18 @@
 
       // Render task in the table
       function renderTask(task) {
-        $("#table-body").prepend(
-          "<tr>" +
-          "<td>" + task.id + "</td>" +
-          "<td>" + task.code + "</td>" +
-          "<td>" + task.message + "</td>" +
-          "<td>" + task.result + "</td>" +
-          "</tr>"
-        );
+        const tableBody = document.getElementById("table-body");
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML =  `
+          <td>${task.id}</td>
+          <td>${task.code}</td>
+          <td>${task.message}</td>
+          <td>${task.result}</td>
+        `;
+
+        tableBody.prepend(newRow);
+
       }
 
       // Receive the events already performed
