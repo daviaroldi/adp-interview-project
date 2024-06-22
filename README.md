@@ -14,7 +14,14 @@
   <li>Express (To create the http server)</li>
 </ul>
 
-<p>Before running the project, you will need to install all the dependencies: <pre>npm install</pre></p>
+<p>Before running the project, you will need to install all the dependencies:</p>
+<pre>npm install</pre>
+<p>Create the <b>.env</b> file in the root path of the project and add the following lines:</p>
+<pre>
+ADP_INTERVIEW_BASE_URL = https://interview.adpeai.com/api/
+ADP_INTERVIEW_API_VERSION = v1
+INTERVAL_EXECUTION = 1000
+</pre>
 
 <p>Here are some commands to run in the project:</p>
 <ul>
