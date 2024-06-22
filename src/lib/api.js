@@ -1,6 +1,6 @@
-const axios = require('axios');
+import { default as axios } from 'axios';
 
-module.exports = new class Api {
+class Api {
   constructor() {
     this.baseURL = process.env.ADP_INTERVIEW_BASE_URL;
     this.version = process.env.ADP_INTERVIEW_API_VERSION;
@@ -18,28 +18,16 @@ module.exports = new class Api {
     return `${this.getURLWithVersion()}/submit-task`;
   }
 
-  async getTask() {
-    let data = null;
-    await axios.get(this.getTaskUrl()).then((response) => {
-      data = response.data;
-    });
-
-    return data;
+  getTask() {
+    return axios.get(this.getTaskUrl());
   }
 
-  async submitTask(task) {
-    const result = {
-      code: null,
-      message: null,
-    };
-    await axios.post(
+  submitTask(task) {
+    return axios.post(
       this.getSubmitTaskUrl(),
       task,
-    ).then((response) => {
-      result.code = response.status;
-      result.message = response.data;
-    });
-
-    return result;
+    );
   }
-}();
+};
+
+export default new Api();

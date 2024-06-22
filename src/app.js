@@ -1,13 +1,21 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
+import dotenv from 'dotenv/config';
+import express from 'express';
+import ejs from 'ejs';
+import http from 'http';
+import { Server } from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import tasksRoutes from './routes/tasks.js';
+import ProcessTaskService from './service/process-task.js'
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-
-const tasksRoutes = require('./routes/tasks');
-const ProcessTaskService = require('./service/process-task');
+const server = http.createServer(app);
+const io = new Server(server);
 
 // public folder is the only one accessible by browser
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -16,7 +24,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('views', path.join(__dirname, '..', 'public'));
 
 // define the engine that will render html
-app.engine('html', require('ejs').renderFile);
+app.engine('html', ejs.renderFile);
 
 app.set('view engine', 'html');
 
